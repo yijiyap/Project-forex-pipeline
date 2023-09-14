@@ -1,10 +1,13 @@
-# forex-pipeline
-Used Kafka, EC2, and Python to create a forex pipeline. 
-Stored it in S3 and used Athena to query the data.
-Would have used an API to get the data, but I didn't want to pay for it. As such I used a csv file instead.
-
+# Project-forex-pipeline
 ## Description
-The forex pipeline is a simple pipeline that takes in forex data from a csv file, and sends it to a Kafka server.
+![Project architecture](architecture.png)
+
+This is a simple pipeline that takes in forex data from a csv file, and sends it to a Kafka server.
+The Kafka server then sends it to a S3 bucket, where it is stored.
+A crawler is used to crawl the data in the S3 bucket, and a table is created in the Glue Data Catalog.
+Athena is used to query the data in the S3 bucket.
+
+Would have used an API to get the data, but I didn't want to pay for it. As such I used a csv file instead.
 
 Note: 
 - Each time you update start and stop the EC2 instance, you will need to change the IP address in the code
@@ -20,7 +23,7 @@ bin/zookeeper-server-start.sh config/zookeeper.properties
 3. Open a new terminal, and run the EC2 instance
 4. Allocate memory to the Kafka server
 ```
-export KAFKA_HEAP_OPTS="-Xmx256M -Xms128M"
+<!-- export KAFKA_HEAP_OPTS="-Xmx256M -Xms128M" -->
 ```
 5. Start the Kafka server
 ```
