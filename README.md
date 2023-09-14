@@ -1,5 +1,6 @@
 # forex-pipeline
 Used Kafka, EC2, and Python to create a forex pipeline. 
+Stored it in S3 and used Athena to query the data.
 Would have used an API to get the data, but I didn't want to pay for it. As such I used a csv file instead.
 
 ## Description
